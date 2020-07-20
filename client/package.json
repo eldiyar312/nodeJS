@@ -1,12 +1,10 @@
 {
-  "name": "node",
+  "name": "client",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "server": "nodemon index.js",
-    "client": "npm run start --prefix client"
+    "start": "node index"
   },
   "keywords": [],
   "author": "",
