@@ -12,14 +12,14 @@ app.use('/api', router)
 
 const start = async () => {
   try {
-    app.listen(PORT, () => {
-      console.log('Server start ', PORT)
-    })
-
     await mongo.connect(config.get('mongoUri'), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true
+    })
+
+    app.listen(PORT, () => {
+      console.log('Server start ', PORT)
     })
   } catch (e) {
     console.log('Error!!!! ', e.message);

@@ -85,13 +85,5 @@ router.post(
 })
 
 
-router.get('/register', async(req, res) => {
-  res.end('<h1>register</h1>')
-})
-
-router.get('/', async(req, res) => {
-  res.end('<h1>home</h1>')
-})
-
 
 module.exports = router
