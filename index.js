@@ -1,14 +1,16 @@
 const express = require('express');
 const config = require('config')
 const mongo = require('mongoose')
-const router = require('./routes/auth')
+const register = require('./routes/register')
+const login = require('./routes/login')
 
 const app = express()
 const PORT = config.get('PORT')
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json({extended: true}))
-app.use('/api', router)
+app.use(register)
+app.use(login)
 
 const start = async () => {
   try {
