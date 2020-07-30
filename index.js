@@ -5,6 +5,7 @@ const register = require('./routes/register')
 const login = require('./routes/login')
 const file = require('./routes/file')
 const images = require('./routes/images')
+const imgFile = require('./routes/imgFile')
 
 const app = express()
 const PORT = process.env.PORT || config.get('PORT')
@@ -19,7 +20,9 @@ app.use(file)
 app.use(images)
 app.use(register)
 app.use(login)
+app.use(imgFile)
 
+// Server
 const start = async () => {
   try {
     await mongo.connect(config.get('mongoUri'), {
