@@ -29,7 +29,7 @@ router.post('/file', async (req, res, next) => {
       const image = new Image({
         title: fields.title, 
         description: fields.description,
-        file: `http://localhost:5000/${FilePath}`
+        file: `https://rocky-refuge-77020.herokuapp.com/${FilePath}`
       })
       await image.save()
 
