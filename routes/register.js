@@ -39,7 +39,7 @@ router.post(
       config.get('jwtSecret'),
       {expiresIn: '720h'}
     )
-    res.status(201).json({token, userID: client.id, message: 'Пользователь успешно вошёл :)'})
+    res.status(201).json({token, userID: client.id, message: 'Пользователь успешно зарегался :)'})
   } catch (e) {
     console.log('Error!!!', e.message)
     res.status(500).json({message: 'error post'})

@@ -21,6 +21,7 @@ router.post(
       res.status(400).json({message: `Не корректные данные`, errors})
 
     const {email, password} = await req.body
+    console.log({email, password})
 
     const client = await User.findOne({ email })
     !client &&
@@ -39,7 +40,7 @@ router.post(
       {expiresIn: '720h'}
     )
 
-    res.json({token, userID: client.id, message: 'Пользователь успешно авторизован :)'})
+    res.status(201).json({token, userID: client.id, message: 'Пользователь успешно вошёл в систему :)'})
   } catch (e) {
     res.status(500).json({message: 'error post'})
     console.log('Error!!!', e.message)
