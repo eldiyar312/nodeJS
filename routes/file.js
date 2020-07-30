@@ -29,11 +29,12 @@ router.post('/file', async (req, res, next) => {
       const image = new Image({
         title: fields.title, 
         description: fields.description,
-        file: `https://rocky-refuge-77020.herokuapp.com/${FilePath}`
+        file: `http://localhost:5000/${FilePath}`
       })
       await image.save()
 
-      res.status(201)
+      console.log('Add MongoDB')
+      res.status(201).json({message: 'Success handled'})
     })
 
     return

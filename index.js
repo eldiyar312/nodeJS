@@ -7,8 +7,7 @@ const file = require('./routes/file')
 const images = require('./routes/images')
 
 const app = express()
-const port = config.get('PORT')
-const PORT = process.env.PORT || port
+const PORT = process.env.PORT || config.get('PORT')
 const SERVER_HOST = process.env.YOUR_HOST || '0.0.0.0'
 
 //params
@@ -29,7 +28,7 @@ const start = async () => {
       useCreateIndex: true
     })
 
-    app.listen(PORT, () => {
+    app.listen(PORT, SERVER_HOST, () => {
       console.log('Server start in ', PORT)
     })
   } catch (e) {
