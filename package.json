@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "server": "nodemon index"
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +18,7 @@
     "formidable": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.25",
-    "mysql2": "^2.1.0"
-  },
-  "devDependencies": {
+    "mysql2": "^2.1.0",
     "nodemon": "^2.0.4"
   }
 }
