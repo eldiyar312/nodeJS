@@ -1,15 +1,15 @@
 const {Router} = require('express')
-const Images = require('../model/Image')
+const Image = require('../model/Image')
 
 const router = Router()
 
-/* Images */
+/* Image */
 router.get('/images', async (req, res) => {
   try {
-    Images.find()
+    Image.find()
       .then(images => res.status(201).json({images}))
   } catch (e) {
-    res.status(500).json({message: 'error post'})
+    res.status(400).json({message: 'error post'})
     res.end()
   }
 })

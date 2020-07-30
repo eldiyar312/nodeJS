@@ -29,7 +29,7 @@ const start = async () => {
       useCreateIndex: true
     })
 
-    app.listen(PORT, SERVER_HOST, () => {
+    app.listen(PORT, () => {
       console.log('Server start in ', PORT)
     })
   } catch (e) {

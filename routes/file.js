@@ -4,6 +4,7 @@ const path = require('path')
 const formidable = require('formidable')
 const Image = require('../model/Image')
 
+
 const router = Router()
 
 // File
@@ -11,34 +12,31 @@ router.post('/file', async (req, res, next) => {
   try {
     const form = formidable({multiples: true})
     
-    form.parse(req, (err, fields, files) => {
-      if(err) {
-        console.log('parse err===', err)
-        next(err)
-        return res.status(400).json({message: err})
-      }
+    //get files etc.
+    form.parse(req, async (err, fields, files) => {
 
-      const oldPath = files.image.path
-      const newPath = path.join('img') + '/' + files.image.name
-      const rawData = fs.readFileSync(oldPath)
+      //path
+      const rawData = fs.readFileSync(files.image.path)
+      const FilePath = path.join('img') + '/' + files.image.name
 
-      fs.writeFile(newPath, rawData, async err => {
-        if(err) {
-          console.log('WriteFile error===', err)
-          return res.status(400).json({message: err})
-        }
-        const image = new Image({
-          title: fields.title, 
-          description: fields.description,
-          file: `https://rocky-refuge-77020.herokuapp.com/${newPath}`
-        })
-        await image.save()
-        return res.status(201).json({message: 'success writed, saved :)'})
+      //Add file in folder
+      fs.writeFile(FilePath, rawData, (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
       })
+
+      //Create data image
+      const image = new Image({
+        title: fields.title, 
+        description: fields.description,
+        file: `https://rocky-refuge-77020.herokuapp.com/${FilePath}`
+      })
+      await image.save()
+
+      res.status(201)
     })
 
-    res.status(200).json({message: 'success hendled :)'})
-    res.end()
+    return
   } catch (e) {
     res.status(400).json({message: `cath=== ${e.message}`})
   }
