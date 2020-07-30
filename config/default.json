@@ -1,6 +1,6 @@
 {
   "mongoUri": "mongodb+srv://eldiyar:america007@cluster0.xhyy7.gcp.mongodb.net/node?retryWrites=true&w=majority",
-  "PORT": 5000,
+  "PORT": 80,
   "jwtSecret": "successfull man",
   "mysql": {
     "host": "176.126.165.135",
