@@ -4,7 +4,7 @@ const mongo = require('mongoose')
 const register = require('./routes/register')
 const login = require('./routes/login')
 // const file = require('./routes/file')
-const images = require('./routes/images')
+// const images = require('./routes/images')
 
 const app = express()
 const PORT = config.get('PORT')
@@ -15,8 +15,8 @@ app.use(express.json({extended: true}))
 
 //routes
 // app.use(file)
-app.use(images)
-app.use(register)
+// app.use(images)
+// app.use(register)
 app.use(login)
 
 const start = async () => {
