@@ -7,7 +7,9 @@ const file = require('./routes/file')
 const images = require('./routes/images')
 
 const app = express()
-const PORT = config.get('PORT')
+const port = config.get('PORT')
+const PORT = process.env.PORT || port
+const SERVER_HOST = process.env.YOUR_HOST || '0.0.0.0'
 
 //params
 app.use(express.urlencoded({extended: true}))
@@ -27,7 +29,7 @@ const start = async () => {
       useCreateIndex: true
     })
 
-    app.listen(PORT, () => {
+    app.listen(PORT, SERVER_HOST, () => {
       console.log('Server start in ', PORT)
     })
   } catch (e) {
