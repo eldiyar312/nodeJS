@@ -12,11 +12,12 @@ const PORT = config.get('PORT')
 //params
 app.use(express.urlencoded({extended: true}))
 app.use(express.json({extended: true}))
+
 //routes
-app.use(register)
-app.use(login)
 app.use(file)
 app.use(images)
+app.use(register)
+app.use(login)
 
 const start = async () => {
   try {
@@ -27,7 +28,7 @@ const start = async () => {
     })
 
     app.listen(PORT, () => {
-      console.log('Server start ', PORT)
+      console.log('Server start in ', PORT)
     })
   } catch (e) {
     console.log('Error!!!! ', e.message);

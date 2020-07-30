@@ -38,6 +38,7 @@ router.post('/file', async (req, res, next) => {
     })
 
     res.status(200).json({message: 'success hendled :)'})
+    res.end()
   } catch (e) {
     res.status(400).json({message: `cath=== ${e.message}`})
   }
