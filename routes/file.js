@@ -3,12 +3,20 @@ const fs = require('fs')
 const path = require('path')
 const formidable = require('formidable')
 const Image = require('../model/Image')
+const cors = require('cors')
 
 
 const router = Router()
 
+// Cors
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
 // File
-router.post('/file', async (req, res, next) => {
+router.post('/file', cors(corsOptions), async (req, res, next) => {
   try {
     const form = formidable({multiples: true})
     
