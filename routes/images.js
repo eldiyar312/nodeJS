@@ -5,7 +5,7 @@ const cors = require('cors')
 const router = Router()
 
 // Cors
-var corsOptions = {
+const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }

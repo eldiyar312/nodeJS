@@ -1,9 +1,17 @@
 const { Router } = require('express')
-const router = Router()
 const path = require('path')
+const cors = require('cors')
 
 
-router.get('/img/:name', (req, res, next) => {
+const router = Router()
+
+// Cors
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+router.get('/img/:name', cors(corsOptions), (req, res, next) => {
   var options = {
     root: path.join('img'),
     dotfiles: 'deny',

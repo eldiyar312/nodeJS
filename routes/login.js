@@ -4,8 +4,15 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const User = require('../model/User')
+const cors = require('cors')
 
 const router = Router()
+
+// Cors
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 /* Login */
 router.post(
@@ -14,6 +21,7 @@ router.post(
     check('email', 'НЕ корректный email!').normalizeEmail().isEmail(),
     check('password', 'НЕ корректный пароль! Введите больше 5 символов').exists().isLength({min: 5, max: 200})
   ],
+  cors(corsOptions),
   async (req, res) => {
   try {
     const errors = validationResult(req)
