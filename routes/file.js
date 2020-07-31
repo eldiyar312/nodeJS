@@ -24,7 +24,7 @@ router.post('/file', async (req, res, next) => {
         if (err) throw err;
         console.log('The file has been saved!');
       })
-
+ 
       //Create data image
       const image = new Image({
         title: fields.title, 
