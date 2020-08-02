@@ -12,12 +12,12 @@ const corsOptions = {
 
 
 /* Image */
-router.get('/images', cors(corsOptions), async (req, res) => {
+router.get('/images', cors(corsOptions), (req, res) => {
   try {
     Image.find()
       .then(images => res.status(200).json({images}))
   } catch (e) {
-    res.status(400).json({message: 'error post'})
+    res.status(400).json({message: e})
     res.end()
   }
 })

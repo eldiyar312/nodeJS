@@ -11,24 +11,14 @@ const corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-router.get('/img/:name', cors(corsOptions), (req, res, next) => {
-  var options = {
-    root: path.join('img'),
-    dotfiles: 'deny',
-    headers: {
-      'x-timestamp': Date.now(),
-      'x-sent': true
-    }
+router.get('/img/:name', cors(corsOptions), (req, res) => {
+  const options = {
+    root: path.join('img')
   }
 
-  var fileName = req.params.name
-  res.sendFile(fileName, options, function (err) {
-    if (err) {
-      next(err)
-    } else {
-      console.log('Sent:', fileName)
-    }
-  })
+  let fileName = req.params.name
+  res.sendFile(fileName, options)
+  res.end()
 })
 
 module.exports = router
