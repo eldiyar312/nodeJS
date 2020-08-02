@@ -14,7 +14,10 @@ const corsOptions = {
 router.get('/img/:name', cors(corsOptions), (req, res) => {
   var options = {
     root: path.join('img'),
-    dotfiles: 'deny'
+    dotfiles: 'deny',
+    headers: {
+      'x-sent': true
+    }
   }
 
   let fileName = req.params.name
