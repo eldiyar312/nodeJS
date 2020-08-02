@@ -14,9 +14,8 @@ const corsOptions = {
 router.get('/img/:name', cors(corsOptions), (req, res) => {
   var options = {
     root: path.join('img'),
-    dotfiles: 'deny',
+    dotfiles: 'allow',
     headers: {
-      'x-timestamp': Date.now(),
       'x-sent': true
     }
   }
