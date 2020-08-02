@@ -12,12 +12,14 @@ const corsOptions = {
 }
 
 router.get('/img/:name', cors(corsOptions), (req, res) => {
-  const options = {
-    root: path.join('img')
+  var options = {
+    root: path.join('img'),
+    dotfiles: 'deny'
   }
 
   let fileName = req.params.name
   res.sendFile(fileName, options)
+  res.end()
 })
 
 module.exports = router
