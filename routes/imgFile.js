@@ -16,6 +16,7 @@ router.get('/img/:name', cors(corsOptions), (req, res) => {
     root: path.join('img'),
     dotfiles: 'allow',
     headers: {
+      'x-timestamp': Date.now(),
       'x-sent': true
     }
   }
