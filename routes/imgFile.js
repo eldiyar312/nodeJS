@@ -16,13 +16,13 @@ router.get('/img/:name', cors(corsOptions), (req, res) => {
     root: path.join('img'),
     dotfiles: 'deny',
     headers: {
+      'x-timestamp': Date.now(),
       'x-sent': true
     }
   }
 
   let fileName = req.params.name
   res.sendFile(fileName, options)
-  res.end()
 })
 
 module.exports = router
