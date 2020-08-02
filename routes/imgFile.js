@@ -18,7 +18,6 @@ router.get('/img/:name', cors(corsOptions), (req, res) => {
 
   let fileName = req.params.name
   res.sendFile(fileName, options)
-  res.end()
 })
 
 module.exports = router
