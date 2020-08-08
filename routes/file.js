@@ -23,6 +23,12 @@ router.post('/file', cors(corsOptions), async (req, res, next) => {
     //get files etc.
     form.parse(req, async (err, fields, files) => {
 
+      const dir = './img';
+      
+      if ( !fs.existsSync(dir) ) {
+        fs.mkdirSync(dir);
+      }
+
       //path
       const rawData = fs.readFileSync(files.image.path)
       const FilePath = path.join('img') + '/' + files.image.name
