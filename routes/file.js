@@ -26,19 +26,19 @@ router.post('/file', cors(corsOptions), async (req, res, next) => {
       const dir = './img';
       
       if ( !fs.existsSync(dir) ) {
-        fs.mkdirSync(dir);
+        fs.mkdirSync(dir);  
       }
 
       //path
       const rawData = fs.readFileSync(files.image.path)
-      const FilePath = path.join('img') + '/' + files.image.name
+      const FilePath = path.join('img') + `/${Date.now()}_${files.image.name}`
 
       //Add file in folder
       fs.writeFile(FilePath, rawData, (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
       })
- 
+
       //Create data image
       const image = new Image({
         title: fields.title, 
