@@ -22,19 +22,28 @@ router.post( '/file', cors(corsOptions), async (req, res, next) => {
 
     //get files
     form.parse( req, async ( err, fields, files ) => {
-      const fileName = files.image.name.split('.')
-      const fileType = fileName[fileName.lenght -1]
 
-      if ( fileType !== 'jpg', 'jpeg', 'png', 'webp' ) {
-        res.status( 400 ).json({ message: 'No image' })
-        return
+      let fileType = files.image.name.split('.')
+      fileType = fileType[fileType.length -1]
+
+      switch ( fileType ) {
+        case 'png':
+          break
+        case 'jpg':
+          break
+        case 'jpeg':
+          break
+        case 'webp':
+          break
+        default:
+          res.status( 400 ).json({ message: 'No image' })
+          return
       }
 
-      const dir = './img';
+      const folderImg = './img'
 
-      !fs.existsSync(dir) &&
-        fs.mkdirSync(dir)
-        console.log('no folder')
+      !fs.existsSync( folderImg ) &&
+        fs.mkdirSync( folderImg )
 
       //path
       const rawData = fs.readFileSync(files.image.path)
