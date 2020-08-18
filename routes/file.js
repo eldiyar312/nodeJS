@@ -8,7 +8,7 @@ const cors = require('cors')
 
 const router = Router()
 
-// Cors
+// CORS
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -16,22 +16,30 @@ const corsOptions = {
 
 
 // File
-router.post('/file', cors(corsOptions), async (req, res, next) => {
+router.post( '/file', cors(corsOptions), async (req, res, next) => {
   try {
-    const form = formidable({multiples: true})
-    
-    //get files etc.
-    form.parse(req, async (err, fields, files) => {
+    const form = formidable({ multiples: true })
+
+    //get files
+    form.parse( req, async ( err, fields, files ) => {
+      const fileName = files.image.name.split('.')
+      const fileType = fileName[fileName.lenght -1]
+
+      if ( fileType !== 'jpg', 'jpeg', 'png', 'webp' ) {
+        res.status( 400 ).json({ message: 'No image' })
+        return
+      }
 
       const dir = './img';
-      
-      if ( !fs.existsSync(dir) ) {
-        fs.mkdirSync(dir);  
-      }
+
+      !fs.existsSync(dir) &&
+        fs.mkdirSync(dir)
+        console.log('no folder')
 
       //path
       const rawData = fs.readFileSync(files.image.path)
       const FilePath = path.join('img') + `/${Date.now()}_${files.image.name}`
+      console.log( 'files.image===', files.image )
 
       //Add file in folder
       fs.writeFile(FilePath, rawData, (err) => {
@@ -39,7 +47,7 @@ router.post('/file', cors(corsOptions), async (req, res, next) => {
         console.log('The file has been saved!');
       })
 
-      //Create data image
+      // Create data image
       const image = new Image({
         title: fields.title, 
         description: fields.description,
@@ -48,12 +56,10 @@ router.post('/file', cors(corsOptions), async (req, res, next) => {
       await image.save()
 
       console.log('Add MongoDB')
-      res.status(201).json({message: 'Success handled'})
+      res.status( 201 ).json({ message: 'Success handled' })
     })
-
-    return
   } catch (e) {
-    res.status(400).json({message: `cath=== ${e.message}`})
+    res.status( 400 ).json({ message: `cath=== ${e.message}` })
   }
 })
 

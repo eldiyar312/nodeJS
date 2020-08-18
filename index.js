@@ -8,19 +8,19 @@ const images = require('./routes/images')
 const imgFile = require('./routes/imgFile')
 
 const app = express()
-const PORT = process.env.PORT || config.get('PORT')
+const PORT = process.env.PORT || 5000
 const SERVER_HOST = process.env.YOUR_HOST || '0.0.0.0'
 
 //params
-app.use(express.urlencoded({extended: true}))
-app.use(express.json({extended: true}))
+app.use( express.urlencoded({ extended: true }) )
+app.use( express.json({ extended: true }) )
 
 //routes
-app.use(file)
-app.use(images)
-app.use(register)
-app.use(login)
-app.use(imgFile)
+app.use( file )
+app.use( images )
+app.use( register )
+app.use( login )
+app.use( imgFile )
 
 // Server
 const start = async () => {
@@ -35,8 +35,8 @@ const start = async () => {
       console.log('Server start in ', PORT)
     })
   } catch (e) {
-    console.log('Error!!!! ', e.message);
-    process.exit(1);
+    console.log('Error!!!! ', e.message)
+    process.exit(1)
   }
 }
 

@@ -5,14 +5,14 @@ const cors = require('cors')
 
 const router = Router()
 
-// Cors
+// CORS
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
 router.get('/img/:name', cors(corsOptions), (req, res, next) => {
-  var options = {
+  const options = {
     root: path.join('img'),
     dotfiles: 'deny',
     headers: {
@@ -21,7 +21,7 @@ router.get('/img/:name', cors(corsOptions), (req, res, next) => {
     }
   }
 
-  var fileName = req.params.name
+  const fileName = req.params.name
   res.sendFile(fileName, options, function (err) {
     if (err) {
       next(err)

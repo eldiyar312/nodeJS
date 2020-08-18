@@ -4,18 +4,19 @@ const cors = require('cors')
 
 const router = Router()
 
-// Cors
+// CORS
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-
-/* Image */
+/* Open API */
 router.get('/images', cors(corsOptions), (req, res) => {
   try {
+
     Image.find()
-      .then(images => res.status(200).json({images}))
+      .then( images => res.status(200).json({images}) )
+
   } catch (e) {
     res.status(400).json({message: e})
     res.end()
