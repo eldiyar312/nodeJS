@@ -23,7 +23,7 @@ router.post(
     const { email, password } = await req.body
 
     /* Search copy user */
-    const client = await User.findOne({ email })  
+    const client = await User.findOne({ email })
     client &&
       res.status(400).json({ message: `Такой email уже существует :(` })
 

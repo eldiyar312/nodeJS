@@ -2,7 +2,7 @@
   "name": "node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index",
   "scripts": {
     "start": "node index",
     "dev": "nodemon index"
@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^14.6.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.2.0",
     "config": "^3.3.1",
@@ -21,6 +22,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.25",
     "mysql2": "^2.1.0",
-    "nodemon": "^2.0.4"
-  }
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {}
 }

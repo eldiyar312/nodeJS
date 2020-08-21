@@ -65,7 +65,7 @@ router.post( '/file', cors(corsOptions), async (req, res, next) => {
       await image.save()
 
       console.log('Add MongoDB')
-      res.status( 201 ).json({ message: 'Success handled' })
+      res.status( 201 ).json({ message: 'Successful handled' })
     })
   } catch (e) {
     res.status( 400 ).json({ message: `cath=== ${e.message}` })

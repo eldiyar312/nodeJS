@@ -22,7 +22,7 @@ router.post(
           res.status( 400 ).json({ message: errors })
       })
 
-    const { email, password } = await req.body
+    const { email, password } = req.body
 
     const client = await User.findOne({ email })
 

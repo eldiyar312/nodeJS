@@ -1,26 +1,27 @@
-const {Router} = require('express')
+const { Router } = require('express')
 const Image = require('../model/Image')
 const cors = require('cors')
 
 const router = Router()
-
-// CORS
 const corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
 /* Open API */
-router.get('/images', cors(corsOptions), (req, res) => {
-  try {
+router.get(
+  '/images', 
+  cors( corsOptions ), 
+  ( req, res ) => {
+    try {
 
-    Image.find()
-      .then( images => res.status(200).json({images}) )
+      Image.find()
+        .then( images => res.status(200).json({ images }) )
 
-  } catch (e) {
-    res.status(400).json({message: e})
-    res.end()
-  }
+    } catch (e) {
+      res.status(400).json({message: e})
+      res.end()
+    }
 })
 
 module.exports = router
