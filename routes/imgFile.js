@@ -22,9 +22,10 @@ router.get(
     }
 
     const fileName = req.params.name
-    res.sendFile(fileName, options, err => {
+    res.sendFile(fileName, options, async err => {
       if (err) {
-        Image.deleteOne({ file: fileName })
+        await Image.deleteOne({ file: fileName })
+        res.status( 404 ).json({ message: 'not found' })
       }
     })
 
