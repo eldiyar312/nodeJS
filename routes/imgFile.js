@@ -25,7 +25,7 @@ router.get(
     res.sendFile(fileName, options, async err => {
       if (err) {
         await Image.deleteOne({ file: fileName })
-        res.status( 404 ).json({ message: 'not found' })
+        res.status( 400 ).json({ message: fileName })
       }
     })
 
