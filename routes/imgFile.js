@@ -22,10 +22,11 @@ router.get(
     }
 
     const fileName = req.params.name
+
+    console.log(fileName)
     res.sendFile(fileName, options, async err => {
       if (err) {
-        await Image.deleteOne({ file: fileName })
-        res.status( 400 ).json({ message: fileName })
+        await Image.deleteOne({ file: `https://rocky-refuge-77020.herokuapp.com/img/${fileName}` })
       }
     })
 
