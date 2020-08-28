@@ -4,7 +4,6 @@ const config = require('config')
 const Image = require('../model/Image')
 const cors = require('cors')
 
-
 const router = Router()
 
 router.get(
@@ -22,11 +21,12 @@ router.get(
     }
 
     const fileName = req.params.name
+    const imagePath = `${path.join('img')}/${fileName}`
 
-    console.log(fileName)
+    console.log('fileName', fileName)
     res.sendFile(fileName, options, async err => {
       if (err) {
-        await Image.deleteOne({ file: `https://rocky-refuge-77020.herokuapp.com/img/${fileName}` })
+        Image.deleteOne({ file: imagePath })
       }
     })
 
