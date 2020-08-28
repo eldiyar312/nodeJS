@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const path = require('path')
 const config = require('config')
+const Image = require('../model/Image')
 const cors = require('cors')
 
 
@@ -23,8 +24,7 @@ router.get(
     const fileName = req.params.name
     res.sendFile(fileName, options, err => {
       if (err) {
-        next(err)
-        res.status( 400 ).json({ message: err })
+        Image.deleteOne({ file: fileName })
       }
     })
 
