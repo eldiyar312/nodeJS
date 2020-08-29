@@ -21,7 +21,7 @@ router.get(
     }
 
     const fileName = req.params.name
-    const imagePath = `${path.join('img')}/${fileName}`
+    const imagePath = `https://rocky-refuge-77020.herokuapp.com/img/${fileName}`
 
     console.log('fileName', fileName)
     res.sendFile(fileName, options, async err => {
