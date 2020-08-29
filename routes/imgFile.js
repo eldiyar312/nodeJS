@@ -24,9 +24,9 @@ router.get(
     const imagePath = `https://rocky-refuge-77020.herokuapp.com/img/${fileName}`
 
     console.log('fileName', fileName)
-    res.sendFile(fileName, options, async err => {
+    res.sendFile(fileName, options, err => {
       if (err) {
-        Image.deleteOne({ file: imagePath })
+        Image.deleteOne({ file: fileName })
       }
     })
 
