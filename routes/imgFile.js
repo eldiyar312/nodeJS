@@ -26,7 +26,7 @@ router.get(
     console.log('fileName', fileName)
     res.sendFile(fileName, options, err => {
       if (err) {
-        Image.deleteOne({ file: fileName })
+        Image.deleteOne({ file: imagePath })
       }
     })
 
