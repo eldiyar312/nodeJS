@@ -37,11 +37,11 @@ app.use( deletePatient )
 // Server
 const start = async () => {
   try {
-    await mongo.connect( mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true
-    })
+    // await mongo.connect( mongoUri, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    //   useCreateIndex: true
+    // })
 
     app.listen(PORT, SERVER_HOST, () => {
       console.log('Server start in ', PORT)
