@@ -23,13 +23,12 @@ router.get(
     const fileName = req.params.name
     const imagePath = `https://rocky-refuge-77020.herokuapp.com/img/${fileName}`
     
-    res.sendFile(fileName, options, err => {
+    res.sendFile(fileName, options, async err => {
       if( err ){
-        Image.deleteOne({ file: imagePath })
-        res.status( 404 )
+        await Image.deleteOne({ file: imagePath })
+        res.status( 404 ).json({ err })
       }
     })
-
   })
 
 module.exports = router
